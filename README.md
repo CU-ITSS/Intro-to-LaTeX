@@ -1,7 +1,7 @@
 # Intro-to-LaTeX-S2022
 Introduction to LaTeX
 
-[Spring 2022 ITSS Mini-Course](https://www.colorado.edu/cartss/programs/interdisciplinary-training-social-sciences-itss/scraping)
+[Spring 2022 ITSS Mini-Course](https://www.colorado.edu/cartss/programs/interdisciplinary-training-social-sciences-itss/scraping)  
 [Brian C. Keegan, Ph.D.](http://brianckeegan.com/)  
 [Assistant Professor, Department of Information Science](https://www.colorado.edu/cmci/people/information-science/brian-c-keegan)  
 University of Colorado Boulder  
@@ -24,7 +24,7 @@ Students will:
 
 ## Class outline
 
-* **Class 1**: Background, syntax, formatting, lists, tables, figures
+* **Class 1**: Background, syntax, formatting, lists, tables, figures ([Slides](https://github.com/CU-ITSS/Intro-to-LaTeX-S2022/raw/main/Lecture_1.pdf))
 * **Class 2**: Math, document structure, bibliographies, presentations
 
 ## Evaluation
