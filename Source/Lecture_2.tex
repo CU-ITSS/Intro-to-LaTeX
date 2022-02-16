@@ -1,0 +1,344 @@
+\documentclass{cubeamer}
+\usepackage[T1]{fontenc}
+\usepackage[Q=yes]{examplep}
+
+\usepackage{soul}
+
+% Font stuff
+\usepackage{fbb}
+\setsansfont{Ubuntu}
+\setmonofont{Inconsolata}
+\setbeamerfont{footnote}{size=\tiny}
+% \AtBeginDocument{\fontseries{sansserif}\selectfont}
+
+\setbeamertemplate{itemize/enumerate body begin}{\small}
+\setbeamertemplate{itemize/enumerate subbody begin}{\footnotesize}
+
+
+
+\usepackage{hyperref}
+\hypersetup{%
+    colorlinks=true,
+    linkcolor=gold,
+    urlcolor=blue
+}
+
+\title{Introduction to \LaTeX}
+
+\subtitle{Lecture 2}
+
+\author[B. Keegan]{Brian C. Keegan, Ph.D.}
+\date{\today} % or whatever the date you are presenting in is
+\institute[Information Science]{Assistant Professor, Department of Information Science}
+\copyrightnotice{\href{https://opensource.org/licenses/MIT}{MIT License}}
+\date{16 February 2022}
+
+\begin{document}
+
+\maketitle
+
+% \cutoc
+
+\section{Introduction}
+
+\begin{frame}{Outline of lectures}
+    \begin{itemize}
+        \item Two lectures (February 9 \& 16) for two hours
+        \item Lecture one
+        \begin{itemize}
+            \item History, culture, syntax, formatting, lists, tables
+        \end{itemize}
+        \item Lecture two
+        \begin{itemize}
+            \item Figures, math, document structure, bibliographies, presentations
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Resources}
+    \begin{itemize}
+        \item \href{https://www.latex-project.org/help/documentation/usrguide.pdf}{User Guide}. \textit{The \LaTeX{} Project}.
+        \item \href{https://en.wikibooks.org/wiki/LaTeX}{\LaTeX}. \textit{Wikibooks}.
+        \item \href{https://www.overleaf.com/learn}{Documentation}. \textit{Overleaf}.
+        \item \href{https://www.learnlatex.org/en/}{Learn \LaTeX}.
+        \item \href{https://www.andy-roberts.net/writing/latex}{Getting to Grips with \LaTeX}.
+        \item \href{http://wch.github.io/latexsheet/latexsheet.pdf}{\LaTeXe~Cheat Sheet}.
+        \item \href{https://tex.stackexchange.com/}{StackOverflow}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Review}
+    \begin{itemize}
+        \item History, minimum viable examples, commands \& environments
+        \item Common bugs involving reserved characters \& quotation marks
+        \item Configuring the document with front matter's packages \& preamble
+        \item Formatting sections \& styling text
+        \item Working with lists \& tables
+        \item Demo Overleaf document is \href{https://www.overleaf.com/read/hktsjnvsyfks}{here}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Today's agenda}
+    \begin{itemize}
+        \item \textbf{Figures}: symbols and equations
+        \item \textbf{Math}: symbols and equations
+        \item \textbf{Modularity}: Multi-file documents
+        \item \textbf{Bibliographies}: BibTeX and citations
+        % \item \textbf{Intermediate}: variables, counters, functions
+        \item \textbf{Presentations}: \texttt{beamer}, \texttt{tikz}, and posters
+        \item \textbf{Office Hours}: Debugging your projects!
+    \end{itemize}
+\end{frame}
+
+\section{Figures}
+
+\begin{frame}[fragile]{Basics of figures}
+    \begin{itemize}
+        \item \texttt{\href{https://ctan.org/pkg/graphicx?lang=en}{graphicx}} provides \verb|\includegraphics| that reads in image files
+        \begin{itemize}
+            \item Vector images (PDF, EPS, SVG) >> raster images (JPEG, PNG, GIF)
+            \item Scaling image size relative to document dimensions
+        \end{itemize}
+        \item Like tables, it often makes sense for the graphics to be embedded within a \texttt{figure} environment defining alignment, caption, and label
+    \end{itemize}
+    
+    \begin{texcode}{A simple figure}
+        \documentclass{article}
+        \usepackage{graphicx}
+        \begin{document}
+        Some text.
+        \begin{figure}
+            \includegraphics[width=.5\textwidth]{image_file.png}
+            \caption{Caption}
+            \label{fig:my_label}
+        \end{figure}
+        \end{document}
+    \end{texcode}
+\end{frame}
+
+\begin{frame}{Intermediate figures}
+    \begin{itemize}
+        \item You may want \href{https://www.overleaf.com/learn/latex/How_to_Write_a_Thesis_in_LaTeX_(Part_3)\%3A_Figures\%2C_Subfigures_and_Tables}{multiple sub-plots} in a single figure
+        \begin{itemize}
+            \item Use the \texttt{\href{https://ctan.org/pkg/caption?lang=en}{caption}} and \texttt{\href{https://ctan.org/pkg/subcaption?lang=en}{subcaption}} packages
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Side-by-side sub-figures}
+    \begin{texcode}{Side-by-side sub-figures}
+        \documentclass{article}
+        \usepackage{graphicx,subcaption}
+        \begin{document}
+        Some text.
+        \begin{figure}
+            \begin{subfigure}{.475\textwidth} % Subfigure width is a hair under half
+                \includegraphics{image_file1.png}
+                \caption{Caption for image 1}
+                \label{fig:image1}
+            \end{subfigure}\hfill % hfill makes the right image right-aligned
+            \begin{subfigure}{.475\textwidth}
+                \includegraphics{image_file2.png}
+                \caption{Caption for image 2}
+                \label{fig:image2}
+            \end{subfigure}\caption{Caption for both images}
+            \label{fig:both_images}
+        \end{figure}
+        \end{document}
+    \end{texcode}
+\end{frame}
+
+\section{Math}
+
+\begin{frame}[fragile]{Typesetting math}
+    \begin{itemize}
+        \item A primary motivation for Knuth to develop \TeX
+        \item Arbitrarily complex equations possible inline or displayed
+        \begin{itemize}
+            \item Dollar signs create the inline environment
+            \item The \texttt{equation} environment creates the display
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{texcode}{Simple and less simple equations}
+        \documentclass{article}\begin{document}
+        Einstein was very smart. He discovered $e=mc^2$. 
+        
+        It required a lot of math that looked like this:
+        \begin{equation}
+            % https://en.wikipedia.org/wiki/Mass%E2%80%93energy_equivalence
+            K_{0}-K_{1}=E\left(\frac{1}{\sqrt{1-\frac{v^{2}}{c^{2}}}}-1\right)
+        \end{equation}
+        \end{document}
+    \end{texcode}
+\end{frame}
+
+\begin{frame}[fragile]{Math symbols}
+    \begin{itemize}
+        \item Many reserved characters can be used within a math environment
+        \begin{itemize}
+            \item Symbols like: \verb#+ - = ! / ( ) [ ] < > | ' : *#
+        \end{itemize}
+        \item Lower- and upper-case Greek letters by cased name: \verb|\alpha \gamma \Delta| becomes $\alpha \gamma \Delta$
+            \begin{itemize}
+                \item Annoyingly, \texttt{\textbackslash Beta} does not resolve automatically, use \texttt{B} explicitly
+            \end{itemize}
+        \item Powers/superscripts with carat, indices/subscripts with underscore
+        \begin{itemize}
+            \item Enclose longer expressions within braces \verb|{}|
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{texcode}{Sub- and super-scripts}
+        \documentclass{article}\begin{document}
+        \begin{equation}
+            \alpha_{\beta+1} = \gamma^2 + \alpha_\gamma^2 - \alpha_{\beta-1}
+        \end{equation}
+        \end{document}
+    \end{texcode}
+\end{frame}
+
+\begin{frame}[fragile]{Intermediate math}
+    \begin{itemize}
+        \item \textit{Many} other symbols and accenting available!
+        \begin{itemize}
+            \item \href{https://en.wikibooks.org/wiki/LaTeX/Mathematics#List_of_mathematical_symbols}{List of mathematical symbols} and \href{https://mirror.math.princeton.edu/pub/CTAN/info/symbols/comprehensive/symbols-a4.pdf}{Comprehensive \LaTeX{} Symbol List}
+            \item Technical syntax in \href{https://en.wikibooks.org/wiki/LaTeX/Linguistics}{linguistics}, \href{https://en.wikibooks.org/wiki/LaTeX/Algorithms}{computer science} and \href{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}{programming}, and  \href{https://en.wikibooks.org/wiki/LaTeX/Chemical_Graphics}{chemistry} also supported
+        \end{itemize}
+        \item Fractions (\texttt{\textbackslash frac}), roots (\texttt{\textbackslash sqrt}), sums (\texttt{\textbackslash sum}), and integrals (\texttt{\textbackslash int}), look like command with multiple parameters
+        \begin{center}
+\begin{verbatim}\frac{n!}{k!(n-k)!} = \binom{n}{k}\end{verbatim}
+        \end{center}
+        \item Matrices are similar to tables: environments with columns delimited by \texttt{\&} and rows delimited by newlines
+    \end{itemize}
+\end{frame}
+
+\section{Modularity}
+
+\begin{frame}[fragile]{Making modular documents}
+\begin{itemize}
+    \item Good development practice suggests breaking code up into smaller sections rather than a monolithic document
+    \begin{itemize}
+        \item Separate ``child'' \texttt{.tex} files for each chapter or section and a ``parent'' \texttt{.tex} files where ordering and preamble is managed
+    \end{itemize}
+    \item Default ``article'' documentclass does not support chapters by default, use default documentclasses like \texttt{\href{https://ctan.org/pkg/book}{book}} and \texttt{\href{https://ctan.org/pkg/report}{report}} instead
+    \item Two options for combining files into a finished documents
+    \begin{itemize}
+        \item Use \texttt{\textbackslash include} to force a page break, but it \textit{cannot} be recursive (no \texttt{\textbackslash include} within \texttt{\textbackslash include}) --- best for chapters
+    \item \texttt{\textbackslash input} does \textit{not} force a page break and \textit{can} be recursive (\texttt{\textbackslash input} within \texttt{\textbackslash input}) --- better for modularizing manuscript sections 
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example of a modularized parent document}
+    \begin{itemize}
+        \item If we had separate files for each chapter of a dissertation, we could compile them all into a completed dissertation with a MVE parent document that looks like:
+    \end{itemize}
+    \begin{texcode}{Modularized thesis or book}
+        \documentclass{report} % notice the change in document class
+        %...other front matter
+        \begin{document}
+        \maketitle \tableofcontents \listoffigures \listoftables % make all the front material
+        \include{Chapter_1} % "Chapter_1.tex" is a file in the same directory
+        \include{Chapter_2}
+        \include{Chapter_3}
+        \include{Chapter_4}
+        \include{Chapter_5}
+        \end{document}
+    \end{texcode}
+\end{frame}
+
+\begin{frame}[fragile]{Collaborative writing and revision tracking}
+\begin{itemize}
+    \item Overleaf provides interfaces for leaving comments and (premium) services for tracking changes and syncing with GitHub repositories
+    \item Version control can be overkill for smaller collaborations, but nevertheless a good opportunity to practice!
+    \item Outside of Overleaf, packages like \texttt{\href{https://ctan.org/pkg/todonotes}{todonotes}} can be used to leave comments that are compiled into the document
+    \item Use \texttt{\href{https://ctan.org/pkg/latexdiff}{latexdiff}} or \texttt{\href{https://ctan.org/pkg/changebar}{changebar}} to automatically highlight changes between versions for revise and resubmit cycles
+\end{itemize}
+\end{frame}
+
+\section{Bibliographies}
+
+\begin{frame}[fragile]{BibTeX}
+    \begin{itemize}
+        \item BibTeX is a database for storing bibliographic information
+        \begin{itemize}
+            \item a \texttt{.bib} file contains entries like ``article'', ``book'', ``inproceedings'', \textit{etc.}
+            \item Populate the \texttt{.bib} file using entries from your Zotero or  Mendeley
+            \item Also use helper tools like \href{https://retorque.re/zotero-better-bibtex/}{BetterBibTeX} to clean up output
+        \end{itemize}
+        \item Each entry has a citation key to be referenced in the text, as well as the meta-data defining the reference (title, author, \textit{etc}.)
+    \end{itemize}
+    
+    \begin{texcode}{BibTeX entry in \texttt{bibliography.bib}}
+        % bibliography.bib
+        @book{kuhn1970structure, % reference type is "book" and citation key
+        title={The Structure of Scientific Revolutions},
+        author={Kuhn, Thomas S},
+        volume={111},
+        year={1970},
+        publisher={Chicago University of Chicago Press}
+        }
+    \end{texcode}
+\end{frame}
+
+\begin{frame}[fragile]{Citing references}
+    \begin{itemize}
+        \item In the body of the text, cite the reference using the \texttt{\textbackslash cite\{\}} command and pass the citation key
+        \begin{itemize}
+            \item Also include a non-breaking space character before the cite command to prevent orphaned citations: \texttt{\textasciitilde\texttt{\textbackslash cite}}
+        \end{itemize}
+        \item Pass multiple comma-separated keys that will be grouped together, depending on citation style
+        \item Specific pages, chapters, tables, \textit{etc.} can be referenced as an option
+    \end{itemize}
+    
+    \begin{texcode}{Citing}
+        \documentclass{article}\begin{document}
+        Scientific knowledge does not accumulate smoothly~\cite{kuhn1970structure}.
+        \bibliography{bibliography}
+        \end{document}
+    \end{texcode}
+\end{frame}
+
+\begin{frame}[fragile]{Citation and bibliography styles}
+    \begin{itemize}
+        \item Reference formatting standards abound, \LaTeX{} supports \href{https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles#Table_of_stylename_values}{several} by default: apalike, plain, abbrv
+        \item Define these styles with \texttt{\textbackslash  bibliographystyle} before referencing the bibliography file at (typically) the end of the document
+        \item More advanced citation and bibliography style management can be customized with the \texttt{\href{https://ctan.org/pkg/natbib}{natbib}} package
+    \end{itemize}
+    
+    \begin{texcode}{Citing}
+        \documentclass{article}\begin{document}
+        Scientific knowledge does not accumulate smoothly~\cite{kuhn1970structure}.
+        \bibliographystyle{apalike} % Define the bibliography style
+        \bibliography{bibliography}
+        \end{document}
+    \end{texcode}
+\end{frame}
+
+\section{Presentations and figures}
+
+\begin{frame}[fragile]{Slides and posters}
+    \begin{itemize}
+        \item You can also use \LaTeX{} to make presentations (like this one!) 
+        \begin{itemize}
+            \item There is a ``slides'' document class, but >99\% chance you'd prefer \texttt{\href{https://ctan.org/pkg/beamer}{beamer}} or a popular Beamer theme like \texttt{\href{https://ctan.org/pkg/beamertheme-metropolis}{metropolis}}
+        \end{itemize}
+        \item \LaTeX{} can also make posters with the \texttt{\href{https://ctan.org/pkg/beamerposter}{beamerposter}} and \texttt{\href{https://ctan.org/pkg/tikzposter}{tikzposter}} templates
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Figures}
+    \begin{itemize}
+        \item \texttt{\href{https://ctan.org/pkg/tikz}{tikz}} is a very powerful package for drawing diagrams and figures in \LaTeX{}
+        \item You will definitely want to build on others' MVEs and resources
+        \begin{itemize}
+            \item Examples at \href{https://github.com/xiaohanyu/awesome-tikz}{Awesome TikZ}, \href{https://texample.net/tikz/examples/}{TeXample}, \href{http://leg.ufpr.br/~walmes/Tikz/}{Walmes}
+        \end{itemize}
+        \item Derivative packages like \href{https://arxiv.org/abs/1709.06005v2}{tikz-network}
+    \end{itemize}
+\end{frame}
+
+\section{Office hours}
+
+\end{document}
