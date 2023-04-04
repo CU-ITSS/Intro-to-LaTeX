@@ -1,4 +1,4 @@
-# Intro-to-LaTeX-S2022
+# CU ITSS: Introduction to LaTeX
 Introduction to LaTeX
 
 Spring 2023 ITSS Mini-Course  
