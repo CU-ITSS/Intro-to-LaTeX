@@ -1,7 +1,7 @@
-# Intro-to-LaTeX-S2022
+# CU ITSS: Introduction to LaTeX
 Introduction to LaTeX
 
-[Spring 2022 ITSS Mini-Course](https://www.colorado.edu/cartss/programs/interdisciplinary-training-social-sciences-itss/scraping)  
+Spring 2023 ITSS Mini-Course  
 [Brian C. Keegan, Ph.D.](http://brianckeegan.com/)  
 [Assistant Professor, Department of Information Science](https://www.colorado.edu/cmci/people/information-science/brian-c-keegan)  
 University of Colorado Boulder  
@@ -10,7 +10,7 @@ Copyright and distributed under an [MIT License](https://opensource.org/licenses
 
 ## Course description
 
-This is a two-class tutorial on using the LaTeX typesetting language. The course is intended for researchers who little or no prior experience working with LaTeX or other programming languages. Classes will meet from 10am - 12pm MT on February 9 and 16 on Zoom. Each class will be 2 hours long and a mixture of lecture and activities. We will be using the [Overleaf](https://www.overleaf.com/) platform for developing and managing our documents: you do not need to purchase the paid tiers unless you want to. 
+This is a two-class tutorial on using the LaTeX typesetting language. The course is intended for researchers who little or no prior experience working with LaTeX or other programming languages. Classes will meet from 11:30am - 2:00pm MT on April 4 and 11 on Zoom. Each class will be 2.5 hours long and a mixture of lecture and activities. We will be using the [Overleaf](https://www.overleaf.com/) platform for developing and managing our documents: you do not need to purchase the paid tiers unless you want to. 
 
 ## Learning objectives
 
