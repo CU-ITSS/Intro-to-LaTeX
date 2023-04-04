@@ -55,7 +55,7 @@ Lecture 1
         \item Assistant Professor, Department of Information Science
         \item Computational social science, governing online commons, high-tempo online collaborations, cannabis informatics
         \item Didn't use \LaTeX{} until \textit{after} dissertation... a huge mistake!
-        \item You are in version 1 of this course, feedback is very welcome!
+        \item You are in version 2 of this course, feedback is very welcome!
         \item \href{mailto:brian.keegan@colorado.edu}{brian.keegan@colorado.edu}
     \end{itemize}
 \end{frame}
@@ -95,7 +95,7 @@ Lecture 1
         \item The code \textit{describing} your document's style and its content is compiled into a file
         \begin{itemize}
             \item Typically \href{https://en.wikipedia.org/wiki/PDF}{PDF} but \href{https://en.wikipedia.org/wiki/PostScript}{PostScript}, \href{https://en.wikipedia.org/wiki/Rich_Text_Format}{RTF}, \href{https://en.wikipedia.org/wiki/HTML}{HTML}, \href{https://en.wikipedia.org/wiki/Scalable_Vector_Graphics}{SVG} possible
-            \item Converting to Microsoft Word ``.doc'' or ``.docx'' is notoriously painful: \LaTeX{} $\rightarrow$ PDF $\rightarrow$ Adobe Acrobat $\rightarrow$ Microsoft Word
+            \item Converting from \LaTeX{} to Microsoft Word ``.doc'' is notoriously painful: \LaTeX{} $\rightarrow$ PDF $\rightarrow$ Adobe Acrobat $\rightarrow$ Microsoft Word
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -103,13 +103,19 @@ Lecture 1
 \begin{frame}{History around \LaTeX}
     \begin{itemize}
         \item \href{https://en.wikipedia.org/wiki/Typography}{Typography} and \href{https://en.wikipedia.org/wiki/Typesetting}{typesetting} are art, technology, and professions originating in 10th-century China
-        \item Early computers could not represent text beyond simple monospaced Latin characters like \href{https://en.wikipedia.org/wiki/Typewriter}{typewriters} or \href{https://en.wikipedia.org/wiki/Teleprinter}{teleprinters}
+        \item Early computers could not represent text \texttt{beyond simple monospaced Latin characters} like \href{https://en.wikipedia.org/wiki/Typewriter}{typewriters} or \href{https://en.wikipedia.org/wiki/Teleprinter}{teleprinters}
         \item \href{https://en.wikipedia.org/wiki/Donald_Knuth}{Donald Knuth} developed ``TeX'' in 1978 to support revisions to his famous book \href{https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming}{\textit{The Art of Computer Programming}}
         \begin{itemize}
             \item Math formulae, non-Latin characters, multiple fonts
         \end{itemize}
         \item \LaTeX{} released in 1985 by Leslie Lamport with a focus on more user-friendly syntax and design patterns than TeX
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Why use \LaTeX?}
+    \centering
+    \includegraphics[width=.75\textwidth]{img/latex_vs_word.jpg}
+    \footnote{\url{https://scholar.social/@caranha/110134212225485118}}
 \end{frame}
 
 \begin{frame}{Culture around \LaTeX}
@@ -423,7 +429,7 @@ Lecture 1
     \begin{itemize}
         \item There are hundreds of \href{https://tug.org/FontCatalogue/}{typefaces available} (\href{https://www.overleaf.com/learn/latex/Font_typefaces#Reference_guide}{Overleaf}), including \href{https://en.wikipedia.org/wiki/Times_New_Roman}{Times} and \href{https://en.wikipedia.org/wiki/Helvetica}{Helvetica}, but the default is \href{https://en.wikipedia.org/wiki/Computer_Modern}{Computer Modern}
         \begin{itemize}
-            \item However, it's non-trivial to change fonts mid-document
+            \item However, it's \href{https://tex.stackexchange.com/a/108746/22575}{non-trivial to change fonts} mid-document
         \end{itemize}
         \item Fonts have three coarse categories: serif, \textsf{sans serif}, and \texttt{monospaced}
         \item Change all the fonts in a document by importing font as a package
